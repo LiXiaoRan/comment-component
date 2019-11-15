@@ -22,6 +22,17 @@ class CommentInput extends Component{
         })        
     }
 
+    handleSubmit(e){
+        //处理信息提交
+        if (this.props.onSubmit) {
+            let {username,content} =this.state;
+            this.props.onSubmit({username,content});
+        }
+        this.setState({
+            content:''
+        })
+    }
+
     render() {
         return (
             <div className="comment-input">
@@ -42,7 +53,7 @@ class CommentInput extends Component{
                     </div>
                 </div>
                 <div className="comment-field-button">
-                    <button>发布</button>
+                    <button onClick={this.handleSubmit.bind(this)}>发布</button>
                 </div>
             </div>
         );
