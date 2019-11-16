@@ -36,6 +36,7 @@ class CommentInput extends Component{
     render() {
         return (
             <div className="comment-input">
+
                 <div className="comment-field">
                     <span className="comment-field-name">用户名：</span>
                     <div className="comment-field-input">
@@ -55,6 +56,7 @@ class CommentInput extends Component{
                 <div className="comment-field-button">
                     <button onClick={this.handleSubmit.bind(this)}>发布</button>
                 </div>
+                
             </div>
         );
     }
