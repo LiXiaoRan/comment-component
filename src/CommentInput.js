@@ -36,6 +36,27 @@ class CommentInput extends Component{
             content:''
         })
     }
+    
+    _saveUserName(username){
+        //保存用户名到localStorage
+        localStorage.setItem("username",username);
+    }
+
+    handleUsernameBlur(e){
+        //处理用户名输出框失焦
+        this._saveUserName(e.target.value)
+    }
+
+    componentWillMount(){
+        this._loadUsername();
+    }
+
+    _loadUsername(){
+        let username=localStorage.getItem("username");
+        if (username) {
+            this.setState({username:username})
+        }
+    }
 
     render() {
         return (
@@ -44,7 +65,7 @@ class CommentInput extends Component{
                 <div className="comment-field">
                     <span className="comment-field-name">用户名：</span>
                     <div className="comment-field-input">
-                        <input value={this.state.username}
+                        <input onBlur={this.handleUsernameBlur.bind(this)} value={this.state.username}
                             onChange={this.handleUserNameChange.bind(this)}
                         />
                     </div>
