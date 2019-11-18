@@ -30,7 +30,11 @@ class CommentInput extends Component{
         //处理信息提交
         if (this.props.onSubmit) {
             let {username,content} =this.state;
-            this.props.onSubmit({username,content});
+            this.props.onSubmit({
+                username:username,
+                content:content,
+                createdTime:+new Date()
+            });//这里给CommentAPP传入一个comment对象，里面包含了username，content，createdTime
         }
         this.setState({
             content:''
