@@ -141,3 +141,7 @@ code {
   justify-content: center;
   align-items: center;
 }
+
+code{
+  color: palevioletred;
+}
