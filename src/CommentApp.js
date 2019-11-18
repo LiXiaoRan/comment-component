@@ -45,13 +45,24 @@ class CommentApp extends Component{
         this._saveComments(comments);
     }
 
+    handleDeleteComment(index){
+        //最终的删除评论操作
+        let comments=this.state.comments;
+        comments.splice(index,1);
+        this.setState({comments});
+        this._saveComments(comments);
+        console.log(index);
+    }
+
     render() {
         return (
             <div className="wrapper">
                 <CommentInput 
                     onSubmit={this.handleSubmitComment.bind(this)}
                 />
-                <CommentList comments={this.state.comments}/>
+                <CommentList comments={this.state.comments} 
+                    onDeleteComment={this.handleDeleteComment.bind(this)}
+                />
             </div>
         );
     }

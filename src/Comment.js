@@ -4,7 +4,9 @@ import PropTypes from 'prop-types'
 class Comment extends Component {
     //验证props的类型,必须为object
     static propTypes={
-        comment:PropTypes.object.isRequired //isRequired是强制这个组件必须传入这个参数，在没设置defaultProps的情况下
+        comment:PropTypes.object.isRequired, //isRequired是强制这个组件必须传入这个参数，在没设置defaultProps的情况下
+        onDeleteComment:PropTypes.func,
+        index:PropTypes.number
     }
 
     componentWillMount(){
@@ -25,6 +27,13 @@ class Comment extends Component {
         })
     }
 
+    handleDeleteComment(){
+        //将要删除的评论index转发到父级comment list中。
+        if (this.props.onDeleteComment) {
+            this.props.onDeleteComment(this.props.index)
+        }
+    }
+
     render() {
         return (
             <div className="comment">
@@ -35,6 +44,7 @@ class Comment extends Component {
                 <span className='comment-createdtime'>
                     {this.state.timeString}
                 </span>
+                <span className='comment-delete' onClick={this.handleDeleteComment.bind(this)}>删除</span>
             </div>
         );
     }
