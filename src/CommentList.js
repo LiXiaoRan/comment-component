@@ -18,6 +18,10 @@ class CommentList extends Component {
       this.props.onDeleteComment(index);
     }
   }
+  componentWillMount(){
+    console.log(Object.prototype.toString.call(this.props.comments));
+    
+  }
 
   render() {
     

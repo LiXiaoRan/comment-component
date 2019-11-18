@@ -1,13 +1,18 @@
 import React ,{Component} from 'react'
 import PropTypes from 'prop-types'
+import LocalStorageActions from "./LocalStorageActions";
+
 class CommentInput extends Component{
     static propTypes={
-        onSubmit:PropTypes.func
+        onSubmit:PropTypes.func,
+        data: PropTypes.any,
+        // saveData: PropTypes.func.isRequired
     }
 
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state={
+            // username:props.data,
             username:'',
             content:''
         }
@@ -49,6 +54,7 @@ class CommentInput extends Component{
     handleUsernameBlur(e){
         //处理用户名输出框失焦
         this._saveUserName(e.target.value)
+        // this.props.saveData(e.target.value);
     }
 
     componentWillMount(){
@@ -97,5 +103,5 @@ class CommentInput extends Component{
     }
 
 }
-
+// CommentInput=LocalStorageActions(CommentInput,'username')
 export default CommentInput
