@@ -24,6 +24,7 @@ export default (WrappedComponent, name) => {
           localStorage.setItem(name, JSON.stringify(data))
         } catch (e) {
           // 如果出错了就当普通字符串保存
+          console.log(name,`${data}`);
           localStorage.setItem(name, `${data}`)
         }
       }
